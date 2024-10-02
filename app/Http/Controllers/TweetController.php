@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
@@ -14,6 +15,11 @@ class TweetController extends Controller
     {
         $tweets = Tweet::with('user')->latest()->get();
         return view('tweets.index', compact('tweets'));
+    }
+
+    public function liked()
+    {
+        return view('tweets.liked');
     }
 
     /**
